@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 import sigmacalc as sc
 import copy
-import emap101 as emap
+import emap as emap
 
 def datafilter(filtee, sifter, func):
     r = copy.deepcopy(filtee)
