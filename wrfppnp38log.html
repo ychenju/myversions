@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            WRFPPNP38开发者日志
+        </title>
+    </head>
+
+    <body>
+        <h2>
+            WRF python processing noob pack for python 3.8 (WRFPPNP38) 开发者日志
+        </h2>
+
+        <br /><hr /><hr /><br />
+        
+        <h4>
+            2022.09.02
+        </h4>
+
+        <ul style="padding-left: 4em;">
+            <li>
+                创建了WRFPPNP38的第一个版本.(v38.0.0)
+            </li>
+            <li>
+                创建了<code>wrfout</code>, <code>bmap</code>两个类.
+            </li>
+            <li>
+                实现了一键画图(<code>quickcontourf</code>).
+            </li>
+            <li>
+                实现了给数据库去除水域的操作.
+            </li>
+        </ul>
+
+        <h4>
+            2022.09.04
+        </h4>
+
+        <ul style="padding-left: 4em;">
+            <li>
+                将<code>wrfout</code>类拆分为<code>wrfout</code>类和<code>frame</code>类，重写构造函数和数据载入方法.
+            </li>
+            <li>
+                将<code>frame</code>类中的<code>__data</code>属性从类属性改变为实例属性（放置于构造函数中），解决了载入的字典数据不能深复制的问题.
+            </li>
+            <li>
+                更新至<q>v38.0.1</q>版本(wrfppnp3801).
+            </li>
+        </ul>
+
+        <h4>
+            2022.09.08
+        </h4>
+
+        <ul style="padding-left: 4em;">
+            <li>
+                更新了部分函数和方法，修正了一些bug.
+            </li>
+        </ul>
+
+        <h4>
+            2022.09.09
+        </h4>
+
+        <ul style="padding-left: 4em;">
+            <li>
+                更新至<q>v38.0.2</q>版本(wrfppnp3802).
+            </li>
+        </ul>
+
+        <h4>
+            2022.09.11 (大型更新)
+        </h4>
+
+        <ul style="padding-left: 4em;">
+            <li>
+                删除了<code>_lm_filter()</code>函数.
+            </li>
+            <li>
+                更新了<code>frame</code>类中的<code>get3x3(),mean3x3(),crop(),lowres3()</code>方法.
+            </li>
+            <li>
+                更改了大量类的初始化方式以取代深拷贝.
+            </li>
+            <li>
+                将所有私有对象改为保护对象，以实现基于类继承的初始化函数重载.
+            </li>
+            <li>
+                将bmap部分单独拆分为另一个文件（单独开发），并更名为emap（easy Basemap）.
+            </li>
+            <li>
+                WRFPPNP更新至<q>v38.0.3</q>版本(wrfppnp3803).
+            </li>
+            <li>
+                EMAP更新至<q>v1.0.1</q>版本(emap101).
+            </li>
+            <li>
+                建立了GitHub版本管理代码仓库.
+            </li>
+        </ul>
+
+       
+
+    </body>
+</html>
+
