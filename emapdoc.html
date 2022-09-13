@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            EMAP文档
+        </title>
+    </head>
+
+    <body>
+        <h2>
+            EASY BASEMAP (EMAP) 文档 v.1.0.1
+        </h2>
+
+        <br /><hr /><hr /><br />
+
+        
+        <h3>
+            基础类 emap
+        </h3>
+
+        <hr />
+
+        <h4>
+            <c style='color:orange'>【实属】</c> _attr:
+        </h4>
+
+        <div style="padding-left: 4em;">
+            存储画图参数的字典类型.使用常量字典EMAP_DEFAULT_ATTRS进行初始化.
+        </div>
+
+        <h4>
+            <c style='color:orange'>【实属】</c> _base:
+        </h4>
+
+        <div style="padding-left: 4em;">
+            画图时用到的Basemap对象实例.初始值为None.
+        </div>
+
+        <h4>
+            <c style='color:blue'>【特殊】</c> __init_(self, **kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            初始化emap类，并使用包含键值对的赋值语句更新参数.
+            <ul>
+                <li>
+                    示例：<code> a = emap(res='l') </code>语句生成一个emap对象a，并将a的属性res（其值存储在<code>a._attr['res']</code>）的值更改为'l'.
+                </li>
+            </ul>
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> resetall(self):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            将所有参数（即参数字典_attr）重置为初始值.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> reset(self, **kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            将所有参数重置为初始值，并使用包含键值对的赋值语句更新参数.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> resettemplate(self, kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            将所有参数重置为初始值，并使用<code>template</code>类中的模板更新参数.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> set(self, **kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            使用包含键值对的赋值语句更新参数.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> settemplate(self, kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            使用<code>template</code>类中的模板更新参数.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> bg(self):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            使用现有的参数生成Basemap实例，并作海岸线. 详细：
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> colorbg(self, style=None):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            用Basemap自带的三种彩色图片初始化地球背景，参数为Basemap对应方法名字符串.
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> fitboundaries(self, source):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            使用source中的数据对'lat'和'lon'参数进行自动调整，即根据source中的经纬度数据范围对作图边界进行匹配. 详细：
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> womesh(self, source):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            将原始经纬度数据与_base图层进行匹配，生成作图所需的网格坐标. 详细：
+        </div>
+
+        <h4>
+            <c style='color:black'>【方法】</c> quickcountourf(self, source, key):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            快速对wrfppnp.frame对象的'key'数据表作二维填充等值线图. 详细：
+        </div>
+
+        <h4>
+            <c style='color:purple'>【子类】</c> emapT(emap):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            使用模板进行初始化后的参数更新，其余与父类完全相同.
+        </div>
+
+        <h4>
+            <c style='color:blue'>【子类方法】</c> emapT.__init__(self, kw):
+        </h4>
+
+        <div style="padding-left: 4em;">
+            该子类初始化后，使用<code>template</code>类中的模板更新_attr中的参数.
+        </div>
+
+        <br />
+        <h3>
+            模板类 template
+        </h3>
+
+        <hr />
+
+        <p style="padding-left: 4em;">
+           用于<code>emap.settemplate()</code>等方法的模板，其属性及方法返回值为一组参数字典.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>cres, lres, ires, hres, fres: </b>
+            将分辨率设置为对应的键值.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>res(r): </b>
+            将分辨率设置为r.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>latinv1_intlbs, latinv10_intlbs, loninv1_intlbs, loninb10_intlbs: </b>
+            将经/纬度线间距设置为1/10度，并将刻度置于整数位置.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>latinv_intlbs(x), loninv1_intlbs(x): </b>
+            将经/纬度线间距设置为x度，并将刻度置于整数位置.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>inv_intlbs(x): </b>
+            将经度和纬度线间距都设置为x度，并将刻度置于整数位置.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>all(arg, *args): </b>
+            合并一个以上其他模板的返回字典.
+        </p>
+
+        <br />
+        <h3>
+            参数名索引
+        </h3>
+
+        <hr />
+
+        <p style="padding-left: 2em;">
+            <b>cmap: </b>
+            填充数据时使用的colormap. 默认为'jet'.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>clbgs: </b>
+            使用默认图片作为Basemap背景填充时的scale参数. 默认为0.2.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>clcolor: </b>
+            海岸线颜色. 默认为'k'.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>cllw: </b>
+            海岸线粗细. 默认为1.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>dpi: </b>
+            初始化matplotlib.pyplot对象时的dpi（分辨率）. 默认值为180.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>figsize: </b>
+            初始化matplotlib.pyplot对象时的figsize参数. 默认值为(12,8).
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>fontsize: </b>
+            经纬度值标记的字体大小. 默认值10.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>gridc: </b>
+            经纬线颜色. 默认为'k'.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>gridlw: </b>
+            经纬线粗细. 默认为0.5.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>intlabels: </b>
+            是否取整数作为经纬线刻度（即将经纬度线序列边界固定为90度或180度而非地图边界）. 默认值为否.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>lat: </b>
+            作图的纬度范围，含有两个元素的列表. 默认值为[-90,90].
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>latinv: </b>
+            纬线间距（度），设置为0则不画纬线. 默认值为0.
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>lon: </b>
+            作图的经度范围，含有两个元素的列表. 默认值为[-180,180].
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>proj: </b>
+            绘制Basemap底图时所用的投影方式，支持以下参数：
+            <ul>
+                <li>
+                    <code>'cyl':</code> 等距圆柱投影 （默认）
+                </li>
+                <li>
+                    <code>'cea':</code> 等积圆柱投影
+                </li>
+                <li>
+                    <code>'merc':</code> 墨卡托投影
+                </li>
+                <li>
+                    <code>'mill':</code> Miller投影
+                </li>
+                <li>
+                    <code>'gall':</code> Gall投影
+                </li>
+            </ul>
+        </p>
+
+        <p style="padding-left: 2em;">
+            <b>res: </b>
+            绘制Basemap底图时所用的边界分辨率，支持以下参数：
+            <ul>
+                <li>
+                    <code>'c':</code> 粗糙 （默认）
+                </li>
+                <li>
+                    <code>'l':</code> 低
+                </li>
+                <li>
+                    <code>'i':</code> 中
+                </li>
+                <li>
+                    <code>'h':</code> 高
+                </li>
+                <li>
+                    <code>'f':</code> 满
+                </li>
+            </ul>
+        </p>
+
+        <br />
+        <h3>
+            其他
+        </h3>
+
+        <hr />
+
+        <h4 style="padding-left: 2em;">
+            EMAP_DEFAULT_ATTRS:
+        </h4>
+
+        <div style="padding-left: 4em;">
+            用于初始化<code>emap._attr属性</code>的常量字典，内含各参数的默认值.
+        </div>
+
+
+    </body>
+</html>
+
